@@ -24,6 +24,15 @@
 #include <errno.h>
 
 
+/* for read/write buffers */
+
+#define READ_BUF_SIZE 1024
+
+#define WRITE_BUF_SIZE 1024
+
+#define BUF_FLUSH -1
+
+
 /* for command chaining */
 
 #define CMD_NORM        0
@@ -42,15 +51,6 @@
 #define CONVERT_UNSIGNED        2
 
 
-/* for read/write buffers */
-
-#define READ_BUF_SIZE 1024
-
-#define WRITE_BUF_SIZE 1024
-
-#define BUF_FLUSH -1
-
-
 /* 1 if using system getline() */
 
 #define USE_GETLINE 0
@@ -62,7 +62,9 @@
 
 #define HIST_MAX        4096
 
+
 extern char **environ;
+
 
 
 /**
@@ -71,6 +73,7 @@ extern char **environ;
  * @str: a string
  * @next: points to the next node
  */
+
 typedef struct liststr
 
 {
@@ -82,7 +85,6 @@ typedef struct liststr
 	struct liststr *next;
 
 } list_t;
-
 
 /**
  * struct passinfo - contains pseudo-arguements to pass into a function,
@@ -152,22 +154,24 @@ typedef struct passinfo
 
 
 #define INFO_INIT \
-
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL,
-0, 0, 0}
-
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+	0, 0, 0}
 
 /**
  * struct builtin - contains a builtin string and related function
  * @type: the builtin command flag
  * @func: the function
-*/
+ */
+
 typedef struct builtin
 {
+
 	char *type;
+
 	int (*func)(info_t *);
 
 } builtin_table;
+
 
 
 /* toem_shloop.c */
